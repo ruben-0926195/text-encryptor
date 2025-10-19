@@ -4,9 +4,10 @@ def choices():
     print("\n==============================")
     print("       TEXT ENCRYPTOR")
     print("==============================\n")
-    print("1. Encrypt key")
-    print("2. Decrypt key")
-    print("3. Quit")
+    print("1. Generate Key")
+    print("2. Encrypt Key")
+    print("3. Decrypt Key")
+    print("4. Quit")
     print("\n------------------------------")
     return int(input("Enter your choice: "))
 
@@ -14,15 +15,16 @@ def main():
     while True:
         choice = choices()
         if choice == 1:
-            print("Generate Key")
+            print("Generating Key...")
+            generate_key()
             input("Press enter to continue...")
         elif choice == 2:
             print("Encrypt Key")
             input("Press enter to continue...")
-        elif choice == 2:
+        elif choice == 3:
             print("Decrypt Key")
             input("Press enter to continue...")
-        elif choice == 3:
+        elif choice == 4:
             print("Quitting")
             break
         else:
