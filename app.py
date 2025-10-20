@@ -13,20 +13,39 @@ def choices():
 
 def main():
     while True:
+
         choice = choices()
+
         if choice == 1:
             print("Generating Key...")
             generate_key()
             input("Press enter to continue...")
+
         elif choice == 2:
             print("Encrypt Key")
+            key = read_key()
+            if not key:
+                print("No key found. Generate a key first.")
+                input("Press enter to continue...")
+                continue
+            fernet = Fernet(key)
+            text = input("Enter text to encrypt: ")
+            if not text:
+                print("Input cannot be empty.")
+                input("Press enter to continue...")
+                return
+            encrypted = fernet.encrypt(text.encode())
+            print(f"Encrypted text:{encrypted.decode()}")
             input("Press enter to continue...")
+
         elif choice == 3:
             print("Decrypt Key")
             input("Press enter to continue...")
+
         elif choice == 4:
             print("Quitting")
             break
+
         else:
             print("\nInvalid Choice")
             input("Press enter to continue...")
