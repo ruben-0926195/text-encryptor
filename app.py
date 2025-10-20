@@ -22,7 +22,7 @@ def main():
             input("Press enter to continue...")
 
         elif choice == 2:
-            print("Encrypt Key")
+            print("Encrypt Text")
             key = read_key()
             if not key:
                 print("No key found. Generate a key first.")
@@ -39,7 +39,20 @@ def main():
             input("Press enter to continue...")
 
         elif choice == 3:
-            print("Decrypt Key")
+            print("Decrypt Text")
+            key = read_key()
+            if not key:
+                print("No key found. Generate a key first.")
+                input("Press enter to continue...")
+                continue
+            fernet = Fernet(key)
+            text = input("Enter text to encrypt: ")
+            if not text:
+                print("Input cannot be empty.")
+                input("Press enter to continue...")
+                return
+            decrypted_text = fernet.decrypt(text.encode())
+            print(f"Encrypted text:{decrypted_text.decode()}")
             input("Press enter to continue...")
 
         elif choice == 4:
